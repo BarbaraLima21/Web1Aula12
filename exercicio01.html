@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestão de Atividade</title>
+    <script>
+        window.onload = inicio;
+
+        function inicio() {
+            let botao = document.getElementById('botao');
+            botao.addEventListener('click', sugerirAtividade);
+        }
+
+        function sugerirAtividade() {
+            let temp = Number(document.getElementById('temp').value);
+            let vento = Number(document.getElementById('vento').value);
+            let umidade = Number(document.getElementById('umidade').value);
+
+            let texto = document.getElementById('texto');
+            let imagem = document.getElementById('imagem');
+
+            if (temp > 25 && umidade < 70) {
+                texto.innerHTML = "Sugestão: Ir para a praia!";
+                imagem.src = "praia.png";
+            } else if (temp < 15 || vento > 30) {
+                texto.innerHTML = "Sugestão: Ficar em casa assistindo TV!";
+                imagem.src = "casa.png";
+            } else if (!(temp < 20)) {
+                texto.innerHTML = "Sugestão: Jogar futebol no parque!";
+                imagem.src = "parque.png";
+            } else {
+                texto.innerHTML = "Sugestão: Fazer uma caminhada leve!";
+                imagem.src = "caminhada.png";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Condições Climáticas</h2>
+    Temperatura (°C): <input type="number" id="temp"><br><br>
+    Vento (km/h): <input type="number" id="vento"><br><br>
+    Umidade (%): <input type="number" id="umidade"><br><br>
+    <button id="botao">Ver Sugestão</button>
+
+    <h3 id="texto"></h3>
+    <img id="imagem" src="" width="300">
+</body>
+
+</html>
